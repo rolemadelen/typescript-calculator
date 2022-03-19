@@ -1,0 +1,116 @@
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h100vh {
+  height: 100vh;
+}
+
+.calc {
+  width: 34rem;
+  height: 46rem;
+  border: 0.2rem solid #616161;
+  border-radius: 1.5rem;
+  background: gray;
+  position: relative;
+  overflow: hidden;
+}
+.calc__screen {
+  width: inherit;
+  height: 10rem;
+  background: #585858;
+}
+.calc__screen input {
+  width: 100%;
+  height: 6rem;
+  background: none;
+  margin-top: 2rem;
+  font-size: 5.4rem;
+  text-align: right;
+  color: #F8F8F8;
+  padding: 0 1rem;
+  border: none;
+  caret-color: transparent;
+  -moz-appearance: textfield;
+}
+.calc__screen input::-webkit-outer-spin-button,
+.calc__screen input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.calc .controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+.calc .controls__btn {
+  cursor: pointer;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin: 0.5rem 0.35rem;
+}
+.calc .controls__btn:first-child {
+  margin-left: 1rem;
+}
+.calc .controls .btn--close {
+  background: #FD4D4D;
+}
+.calc .controls .btn--close:hover {
+  background: #FD4D4DA9;
+}
+.calc .controls .btn--minimize {
+  background: #FFD540;
+}
+.calc .controls .btn--minimize:hover {
+  background: #FFD540A9;
+}
+.calc .controls .btn--maximize {
+  background: #35CD00;
+}
+.calc .controls .btn--maximize:hover {
+  background: #35CD00A9;
+}
+.calc__button-box {
+  width: 34rem;
+  height: 36rem;
+}
+.calc__button-box button {
+  font-weight: bold;
+  font-size: 2.4rem;
+  color: #F8F8F8;
+  background: #CDCDCD;
+  cursor: pointer;
+  width: 8.5rem;
+  height: 7.2rem;
+  margin: 0;
+  float: left;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.calc__button-box button.btn--operator {
+  background: #585858;
+}
+.calc__button-box button.btn--operator-second {
+  background: #B5B5B5;
+}
+.calc__button-box button.btn--double {
+  width: 17rem;
+}
+
+/*# sourceMappingURL=style.css.map */
