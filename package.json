@@ -1,0 +1,20 @@
+{
+  "name": "typescript-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "open http://localhost:8080 && node server.js",
+    "scss": "sass index.scss:index.css . --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/midotype/typescript-calculator.git"
+  },
+  "author": "Mido Ryu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/midotype/typescript-calculator/issues"
+  },
+  "homepage": "https://github.com/midotype/typescript-calculator#readme"
+}
