@@ -4,20 +4,93 @@
 
 body {
   font-size: 1.6rem;
+  background: #5f7bab9c;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input:focus {
   outline: none;
 }
 
-.flex-center {
+.relative {
+  position: relative;
+}
+
+.flex {
   display: flex;
+}
+.flex-center {
   justify-content: center;
   align-items: center;
 }
 
-.h100vh {
+.h100 {
   height: 100vh;
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.controls__control {
+  margin: 0.5rem 0.35rem;
+}
+.controls__control:first-child {
+  margin-left: 1rem;
+}
+
+.control {
+  cursor: pointer;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+.control--close {
+  background: #fd4d4d;
+}
+.control--close:hover {
+  background: #fd4d4da9;
+}
+.control--minimize {
+  background: #ffd540;
+}
+.control--minimize:hover {
+  background: #ffd540a9;
+}
+.control--maximize {
+  background: #35cd00;
+}
+.control--maximize:hover {
+  background: #35cd00a9;
+}
+
+.input {
+  width: 100%;
+  height: 6rem;
+  background: none;
+  font-size: 5.4rem;
+  color: #f8f8f8;
+  border: none;
+}
+
+.screen {
+  width: inherit;
+  height: 10rem;
+  background: #585858;
+}
+.screen__input {
+  padding: 0 1rem;
+  margin-top: 2rem;
+  text-align: right;
+  caret-color: transparent;
+  -moz-appearance: textfield;
 }
 
 .calc {
@@ -26,90 +99,35 @@ input:focus {
   border: 0.2rem solid #616161;
   border-radius: 1.5rem;
   background: gray;
-  position: relative;
   overflow: hidden;
 }
-.calc__screen {
-  width: inherit;
-  height: 10rem;
-  background: #585858;
-}
-.calc__screen input {
-  width: 100%;
-  height: 6rem;
-  background: none;
-  margin-top: 2rem;
-  font-size: 5.4rem;
-  text-align: right;
-  color: #F8F8F8;
-  padding: 0 1rem;
-  border: none;
-  caret-color: transparent;
-  -moz-appearance: textfield;
-}
-.calc__screen input::-webkit-outer-spin-button,
-.calc__screen input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.calc .controls {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-}
-.calc .controls__btn {
-  cursor: pointer;
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  margin: 0.5rem 0.35rem;
-}
-.calc .controls__btn:first-child {
-  margin-left: 1rem;
-}
-.calc .controls .btn--close {
-  background: #FD4D4D;
-}
-.calc .controls .btn--close:hover {
-  background: #FD4D4DA9;
-}
-.calc .controls .btn--minimize {
-  background: #FFD540;
-}
-.calc .controls .btn--minimize:hover {
-  background: #FFD540A9;
-}
-.calc .controls .btn--maximize {
-  background: #35CD00;
-}
-.calc .controls .btn--maximize:hover {
-  background: #35CD00A9;
-}
-.calc__button-box {
+
+.calc-body {
   width: 34rem;
   height: 36rem;
 }
-.calc__button-box button {
+.calc-body .button {
+  float: left;
+  margin: 0;
+}
+
+.button {
   font-weight: bold;
   font-size: 2.4rem;
-  color: #F8F8F8;
-  background: #CDCDCD;
+  color: #f8f8f8;
+  background: #cdcdcd;
   cursor: pointer;
   width: 8.5rem;
   height: 7.2rem;
-  margin: 0;
-  float: left;
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
-.calc__button-box button.btn--operator {
+.button--darkgray {
   background: #585858;
 }
-.calc__button-box button.btn--operator-second {
-  background: #B5B5B5;
+.button--gray {
+  background: #b5b5b5;
 }
-.calc__button-box button.btn--double {
+.button--double-width {
   width: 17rem;
 }
 
