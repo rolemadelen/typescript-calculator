@@ -6,53 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <script src="./dist/index.js"></script>
     <title>MacOS Calculator</title>
 </head>
 
 <body>
-    <section class="flex-center h100vh">
-        <div class="calc">
-            <div class="controls">
-                <span class="controls__btn btn--close"></span>
-                <span class="controls__btn btn--minimize"></span>
-                <span class="controls__btn btn--maximize"></span>
+    <div>
+        <span class="control control--close"></span>
+        <span class="control control--minimize"></span>
+        <span class="control control--maximize"></span>
+        <input type="number" class="input" value="123"/>
+        <button class="button">A</button>
+        <button class="button button--darkgray">B</button>
+        <button class="button button--gray">C</button>
+        <button class="button button--double-width">D</button>
+    </div>
+
+    <section class="flex flex-center h100">
+        <div class="calc relative">
+            <div class="controls flex">
+                <span class="control controls__control control--close"></span>
+                <span class="control controls__control control--minimize"></span>
+                <span class="control controls__control control--maximize"></span>
             </div>
-            <div class="calc__screen flex-center">
-                <input type="number" name="screen" id="screen" value="0">
+            <div class="screen flex flex-center">
+                <input type="number" name="screen" class="input screen__input" value="0">
             </div>
-            <div class="calc__button-box">
+            <div class="calc-body">
                 <div>
-                    <button class="btn--operator-second">C</button>
-                    <button class="btn--operator-second">+/-</button>
-                    <button class="btn--operator-second">%</button>
-                    <button class="btn--operator">/</button>
+                    <button class="button button--gray">C</button>
+                    <button class="button button--gray">+/−</button>
+                    <button class="button button--gray">%</button>
+                    <button class="button button--darkgray">÷</button>
                 </div>
                 <div>
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button class="btn--operator">x</button>
+                    <button class="button">7</button>
+                    <button class="button">8</button>
+                    <button class="button">9</button>
+                    <button class="button button--darkgray">×</button>
                 </div>
                 <div>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button class="btn--operator">-</button>
+                    <button class="button">4</button>
+                    <button class="button">5</button>
+                    <button class="button">6</button>
+                    <button class="button button--darkgray">−</button>
                 </div>
                 <div>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button class="btn--operator">+</button>
+                    <button class="button">1</button>
+                    <button class="button">2</button>
+                    <button class="button">3</button>
+                    <button class="button button--darkgray">+</button>
                 </div>
                 <div>
-                    <button class="btn--double">0</button>
-                    <button class="btn--operator-second">.</button>
-                    <button class="btn--operator">=</button>
+                    <button class="button button--double-width">0</button>
+                    <button class="button button--gray">.</button>
+                    <button class="button button--darkgray">=</button>
                 </div>
             </div>
         </div>
     </section>
 </body>
-
 </html>

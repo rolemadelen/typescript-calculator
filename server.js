@@ -7,7 +7,7 @@ fs.readFile('./index.html', function (err, data) {
     }
     html = data;
   });
-  fs.readFile('./index.css', function (err, data) {
+  fs.readFile('./style.css', function (err, data) {
     if (err) {
       throw err;
     }
