@@ -1,89 +1,71 @@
 window.onload = () => {
     const buttons: NodeList = document.querySelectorAll("button");
     const screen: HTMLInputElement = document.querySelector("input[name='screen']") as HTMLInputElement;
-    let operandA: number | null = null;
-    let operandB: number | null = null;
     let screenValue: string | null = '';
-    let isOperatorSelected: boolean = false;
+    let operandA: string = '';
+    let shouldGetNextInput: boolean = true;
     let isDecimal: boolean = false;
     let selectedOperator: string = '';
+    
+    function init() {
+        screen.setAttribute('value', '0');
+        screenValue = '';
+        operandA = '';
+        shouldGetNextInput = true;
+    }
+
+    function evaluate(op: string) {
+        if(shouldGetNextInput) return;
+
+        if(op !== selectedOperator) op = selectedOperator;
+
+        if(operandA === '' || selectedOperator === '') {
+            operandA = screenValue || "";
+            shouldGetNextInput = true
+        } else {
+            operandA = String(Function("return " + operandA + op + screenValue)());
+            screen.setAttribute('value', operandA);
+            shouldGetNextInput = true
+        }
+        isDecimal = false;
+    }
 
     function clearScreen(): void {
-        screen.setAttribute('value', '0');
-        operandA = null;
-        operandB = null;
-        screenValue = '';
-        isOperatorSelected = false;
-        isDecimal = false;
-        selectedOperator = '';
+        init();
     }
 
     function invertSign(): void {
-        let num: number = Number(screen.value);
-        num *= -1;
-        screen.setAttribute('value', String(num));
+        operandA = String(Number(operandA) * -1);
+        screen.setAttribute('value', operandA);
     }
 
     function percentify(): void {
-        const num: number = Number(screen.value) / 100;
-        screenValue = String(num);
-        screen.setAttribute('value', screenValue);
+        operandA = String(Number(screenValue) / 100.0);
+        screenValue = operandA;
+        screen.setAttribute('value', operandA);
     }
 
-    function add(op: string): void {
-        if(operandA == null) {
-            operandA = Number(screenValue);
-        } else {
-            operandB = Number(screenValue);
-            operandA += operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-
-        selectedOperator = op;
-        isOperatorSelected = true;
+    function add(): void {
+        evaluate("+");
+        selectedOperator = "+";
     }
 
-    function subtract(op: string): void {
-        if(operandA == null) {
-            operandA = Number(screenValue);
-        } else {
-            operandB = Number(screenValue);
-            operandA -= operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-
-        selectedOperator = op;
-        isOperatorSelected = true;
+    function subtract(): void {
+        evaluate("-");
+        selectedOperator = "-";
     }
 
-    function multiply(op: string): void {
-        if(operandA == null) {
-            operandA = Number(screenValue);
-        } else {
-            operandB = Number(screenValue);
-            operandA *= operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-
-        selectedOperator = op;
-        isOperatorSelected = true;   
+    function multiply(): void { 
+        evaluate("*");
+        selectedOperator = "*";
     }
 
-    function divide(op: string): void {
-        if(operandA == null) {
-            operandA = Number(screenValue);
-        } else {
-            operandB = Number(screenValue);
-            operandA /= operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-
-        selectedOperator = op;
-        isOperatorSelected = true;   
+    function divide(): void {
+        evaluate("/");
+        selectedOperator = "/";
     }
 
     function process(op: string | null): void {
-        console.log("screenValue: ", screenValue);
         if(op === "C") { 
             clearScreen(); 
         }
@@ -94,28 +76,26 @@ window.onload = () => {
             percentify(); 
         }
         else if(op === "+") { 
-            add(op);
+            add();
         }
         else if(op === "−") {
-            subtract(op);
+            subtract();
         }
         else if(op === "×") {
-            multiply(op);
+            multiply();
         }
         else if(op === "÷") {
-            divide(op);
+            divide();
         }
         else if(op === ".") {
-            if(!isDecimal) {
-                isDecimal = true;
-            }
+            isDecimal = true;
         }
         else if(op === "=") {
-            if(selectedOperator !== '') {
-                let temp: string = selectedOperator;
-                selectedOperator = '';
-                process(temp);
-            }
+            if(selectedOperator === '') return;
+            operandA = String(Function("return " + operandA + selectedOperator + screenValue)());
+            screen.setAttribute('value', operandA);
+            shouldGetNextInput = true
+            isDecimal = false;
         }
     }
 
@@ -125,17 +105,17 @@ window.onload = () => {
             let value: number = Number(target.textContent);
             if(value >= 0 && value < 10) {
                 let currentValue: string = screen.value;
-                if (currentValue == "0" || isOperatorSelected ) { 
+                if (shouldGetNextInput) { 
                     currentValue = ""; 
-                    isOperatorSelected = false;
+                    shouldGetNextInput = false;
                 }
 
-                if(isDecimal) {
+                if(isDecimal && !currentValue.includes(".")) {
                     currentValue += ".";
                 }
+
                 currentValue = currentValue + target.textContent;
                 screenValue = currentValue;
-                console.log(screenValue);
                 screen.setAttribute('value', currentValue);
             } else {
                 let operator: string | null = target.textContent;

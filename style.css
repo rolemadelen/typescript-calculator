@@ -112,6 +112,7 @@ input:focus {
 }
 
 .button {
+  display: block;
   font-weight: bold;
   font-size: 2.4rem;
   color: #f8f8f8;
@@ -121,11 +122,20 @@ input:focus {
   height: 7.2rem;
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
+.button:hover {
+  background: #bebebe;
+}
 .button--darkgray {
   background: #585858;
 }
+.button--darkgray:hover {
+  background: #444;
+}
 .button--gray {
   background: #b5b5b5;
+}
+.button--gray:hover {
+  background: #ababab;
 }
 .button--double-width {
   width: 17rem;
