@@ -90,6 +90,15 @@ window.onload = () => {
             shouldGetNextInput = true;
             isDecimal = false;
         }
+        let t = document.querySelector(".screen > input");
+        console.log("operandA: ", operandA, operandA.length);
+        if (operandA.length > 10) {
+            t.style.fontSize = String((48 - String(operandA).length) / 10) + "rem";
+            console.log(t.style.fontSize);
+        }
+        else {
+            t.style.fontSize = "5.4rem";
+        }
     }
     for (let i = 0; i < buttons.length; ++i) {
         buttons[i].addEventListener("click", (e) => {
