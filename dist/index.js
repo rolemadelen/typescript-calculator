@@ -2,81 +2,62 @@
 window.onload = () => {
     const buttons = document.querySelectorAll("button");
     const screen = document.querySelector("input[name='screen']");
-    let operandA = null;
-    let operandB = null;
     let screenValue = '';
-    let isOperatorSelected = false;
+    let operandA = '';
+    let shouldGetNextInput = true;
     let isDecimal = false;
     let selectedOperator = '';
-    function clearScreen() {
+    function init() {
         screen.setAttribute('value', '0');
-        operandA = null;
-        operandB = null;
         screenValue = '';
-        isOperatorSelected = false;
+        operandA = '';
+        shouldGetNextInput = true;
+    }
+    function evaluate(op) {
+        if (shouldGetNextInput)
+            return;
+        if (op !== selectedOperator)
+            op = selectedOperator;
+        if (operandA === '' || selectedOperator === '') {
+            operandA = screenValue || "";
+            shouldGetNextInput = true;
+        }
+        else {
+            operandA = String(Function("return " + operandA + op + screenValue)());
+            screen.setAttribute('value', operandA);
+            shouldGetNextInput = true;
+        }
         isDecimal = false;
-        selectedOperator = '';
+    }
+    function clearScreen() {
+        init();
     }
     function invertSign() {
-        let num = Number(screen.value);
-        num *= -1;
-        screen.setAttribute('value', String(num));
+        operandA = String(Number(operandA) * -1);
+        screen.setAttribute('value', operandA);
     }
     function percentify() {
-        const num = Number(screen.value) / 100;
-        screenValue = String(num);
-        screen.setAttribute('value', screenValue);
+        operandA = String(Number(screenValue) / 100.0);
+        screenValue = operandA;
+        screen.setAttribute('value', operandA);
     }
-    function add(op) {
-        if (operandA == null) {
-            operandA = Number(screenValue);
-        }
-        else {
-            operandB = Number(screenValue);
-            operandA += operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-        selectedOperator = op;
-        isOperatorSelected = true;
+    function add() {
+        evaluate("+");
+        selectedOperator = "+";
     }
-    function subtract(op) {
-        if (operandA == null) {
-            operandA = Number(screenValue);
-        }
-        else {
-            operandB = Number(screenValue);
-            operandA -= operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-        selectedOperator = op;
-        isOperatorSelected = true;
+    function subtract() {
+        evaluate("-");
+        selectedOperator = "-";
     }
-    function multiply(op) {
-        if (operandA == null) {
-            operandA = Number(screenValue);
-        }
-        else {
-            operandB = Number(screenValue);
-            operandA *= operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-        selectedOperator = op;
-        isOperatorSelected = true;
+    function multiply() {
+        evaluate("*");
+        selectedOperator = "*";
     }
-    function divide(op) {
-        if (operandA == null) {
-            operandA = Number(screenValue);
-        }
-        else {
-            operandB = Number(screenValue);
-            operandA /= operandB;
-            screen.setAttribute('value', String(operandA));
-        }
-        selectedOperator = op;
-        isOperatorSelected = true;
+    function divide() {
+        evaluate("/");
+        selectedOperator = "/";
     }
     function process(op) {
-        console.log("screenValue: ", screenValue);
         if (op === "C") {
             clearScreen();
         }
@@ -87,28 +68,27 @@ window.onload = () => {
             percentify();
         }
         else if (op === "+") {
-            add(op);
+            add();
         }
         else if (op === "−") {
-            subtract(op);
+            subtract();
         }
         else if (op === "×") {
-            multiply(op);
+            multiply();
         }
         else if (op === "÷") {
-            divide(op);
+            divide();
         }
         else if (op === ".") {
-            if (!isDecimal) {
-                isDecimal = true;
-            }
+            isDecimal = true;
         }
         else if (op === "=") {
-            if (selectedOperator !== '') {
-                let temp = selectedOperator;
-                selectedOperator = '';
-                process(temp);
-            }
+            if (selectedOperator === '')
+                return;
+            operandA = String(Function("return " + operandA + selectedOperator + screenValue)());
+            screen.setAttribute('value', operandA);
+            shouldGetNextInput = true;
+            isDecimal = false;
         }
     }
     for (let i = 0; i < buttons.length; ++i) {
@@ -117,16 +97,15 @@ window.onload = () => {
             let value = Number(target.textContent);
             if (value >= 0 && value < 10) {
                 let currentValue = screen.value;
-                if (currentValue == "0" || isOperatorSelected) {
+                if (shouldGetNextInput) {
                     currentValue = "";
-                    isOperatorSelected = false;
+                    shouldGetNextInput = false;
                 }
-                if (isDecimal) {
+                if (isDecimal && !currentValue.includes(".")) {
                     currentValue += ".";
                 }
                 currentValue = currentValue + target.textContent;
                 screenValue = currentValue;
-                console.log(screenValue);
                 screen.setAttribute('value', currentValue);
             }
             else {
