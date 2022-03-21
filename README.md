@@ -40,3 +40,4 @@ Some ideas to improve the calculator:
 - minimize button (yellow) => simple calculator mode (default)
 - display which operator is selected, or
 - display the expression as it goes at the top of the input screen.
+- Rounding issues (e.g. `0.1 + 0.2` => `0.3000000004`)

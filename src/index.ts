@@ -99,10 +99,8 @@ window.onload = () => {
         }
 
         let t: HTMLElement = document.querySelector(".screen > input") as HTMLElement;
-        console.log("operandA: ", operandA, operandA.length);
         if(operandA.length > 10) {
             t.style.fontSize = String((48 - String(operandA).length)/10) + "rem";
-            console.log(t.style.fontSize);
         } else {
             t.style.fontSize = "5.4rem";
         }
