@@ -1,0 +1,33 @@
+.btn {
+    display: block;
+    font-weight: bold;
+    font-size: 2.4rem;
+    color: #f8f8f8;
+    background: #cdcdcd;
+    cursor: pointer;
+    width: 8.5rem;
+    height: 7.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.btn:hover {
+    background: #bebebe;
+}
+
+.-darkgray {
+    background: #585858;
+    &:hover {
+        background: #444;
+    }
+}
+
+.-gray {
+    background: #b5b5b5;
+    &:hover {
+        background: #ababab;
+    }
+}
+
+.-double-width {
+    width: 17rem;
+}
