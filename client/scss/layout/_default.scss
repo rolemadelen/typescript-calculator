@@ -1,0 +1,24 @@
+#mainContent {
+    width: $small-calc-width;
+    height: auto;
+    position: relative;
+
+    border: 0.2rem solid rgb(97, 97, 97);
+    border-radius: 1.5rem;
+    background: gray;
+    overflow: hidden;
+}
+
+.l-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.l-left > * > button{
+    float: left;
+}
+
+.l-flex {
+    display: flex;
+}

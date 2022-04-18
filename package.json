@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "open http://localhost:8080 && node src/server.js",
-    "scss": "sass index.scss:index.css . --watch"
+    "scss": "sass client/scss/main.scss:client/css/main.css --watch"
   },
   "repository": {
     "type": "git",

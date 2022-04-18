@@ -1,0 +1,19 @@
+.screen {
+    width: inherit;
+    height: 10rem;
+    background: #585858;
+}
+
+.input {
+    padding: 0 1rem;
+    margin-top: 2rem;
+    text-align: right;
+    caret-color: transparent;
+    -moz-appearance: textfield;
+    width: 100%;
+    height: 6rem;
+    background: none;
+    font-size: 5.4rem;
+    color: #f8f8f8;
+    border: none;
+}
