@@ -27,6 +27,10 @@ input:focus {
   overflow: hidden;
 }
 
+.l-fullHeight {
+  height: 100vh;
+}
+
 .l-center {
   display: flex;
   justify-content: center;
@@ -39,6 +43,12 @@ input:focus {
 
 .l-flex {
   display: flex;
+}
+
+.l-screen {
+  width: inherit;
+  height: 10rem;
+  background: #585858;
 }
 
 .btn {
@@ -109,12 +119,6 @@ input:focus {
 }
 .control.-maximize:hover {
   background: #35cd00a9;
-}
-
-.screen {
-  width: inherit;
-  height: 10rem;
-  background: #585858;
 }
 
 .input {
