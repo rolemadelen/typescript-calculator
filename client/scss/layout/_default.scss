@@ -5,8 +5,12 @@
 
     border: 0.2rem solid rgb(97, 97, 97);
     border-radius: 1.5rem;
-    background: gray;
+    background: $main-bg;
     overflow: hidden;
+}
+
+.l-fullHeight {
+    height: 100vh;
 }
 
 .l-center {

@@ -14,6 +14,11 @@ CodePen link - [Calculator UI](https://codepen.io/midotype/pen/WNdwgOj)
 
 ---
 
+updated: 04-21-2022
+- applied SMACSS architecture
+
+---
+
 ## Issues 
 
 I was struggling with saving the state of evaluated operands and the operator. 

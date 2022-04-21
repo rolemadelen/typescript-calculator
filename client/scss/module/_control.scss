@@ -17,19 +17,19 @@
     }
 
     &.-close {
-        background: #fd4d4d;
+        background: $close;
     }
     &.-close:hover {
         background: #fd4d4da9;
     }
     &.-minimize {
-        background: #ffd540;
+        background: $minimize;
     }
     &.-minimize:hover {
         background: #ffd540a9;
     }
     &.-maximize {
-        background: #35cd00;
+        background: $maximize;
     }
     &.-maximize:hover {
         background: #35cd00a9;
